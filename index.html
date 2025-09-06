@@ -10,6 +10,7 @@
             text-align: center;
             margin-top: 50px;
         }
+    
         #imageContainer {
             display: flex;
             margin-top: 100px;
@@ -17,6 +18,7 @@
             justify-content: center;
             flex-direction: column;
         }
+    
         img {
             max-width: 70%;
             height: auto;
@@ -24,6 +26,7 @@
             display: none;
             margin-bottom: 20px;
         }
+    
         input[type="text"] {
             width: 300px;
             height: 30px;
@@ -31,6 +34,7 @@
             text-align: center;
             border-radius: 5px;
         }
+    
         button {
             width: 307px;
             height: 38px;
@@ -42,6 +46,7 @@
             border-radius: 5px;
             cursor: pointer;
         }
+    
         #downloadButton {
             display: none;
             width: 200px;
@@ -54,36 +59,56 @@
             cursor: pointer;
             text-align: center;
         }
+    
         #downloadButton:hover {
             background-color: #218838;
         }
     
+        /* ✅ Mobile adjustments only */
         @media (max-width: 600px) {
             body {
                 margin-top: 20px;
                 font-size: medium;
+                padding: 0 10px; /* keeps content away from screen edges */
             }
+    
+            h1 {
+                font-size: 1.2rem; /* shrink large titles for small screens */
+                line-height: 1.4;
+            }
+    
+            h5 {
+                font-size: 0.9rem;
+                margin-left: 5px; /* keep it tucked to the left */
+            }
+    
             img {
-                max-width: 90%;
-                margin-top: 20px;
+                max-width: 95% !important; /* allow pictures to expand */
+                margin-top: 15px;
             }
+    
             input[type="text"] {
-                width: 90%;
-                font-size: 20px;
-                height: 25px;
-            }
-            button {
-                width: 90%;
-                font-size: 20px;
-                height: 30px;
-            }
-            #downloadButton {
-                width: 90%;
-                font-size: 20px;
+                width: 100%;
+                font-size: 18px;
                 height: 35px;
+            }
+    
+            button {
+                width: 100%;
+                font-size: 18px;
+                height: 40px;
+                margin-top: 10px;
+            }
+    
+            #downloadButton {
+                width: 100%;
+                font-size: 18px;
+                height: 40px;
+                margin-top: 10px;
             }
         }
     </style>
+    
     
 </head>
 <body>
