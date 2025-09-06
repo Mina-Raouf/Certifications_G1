@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #imageContainer {
+            display: flex;
+            margin-top: 100px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        img {
+            max-width: 70%;
+            height: auto;
+            width: auto;
+            display: none;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 300px;
+            height: 30px;
+            font-size: 30px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        button {
+            width: 307px;
+            height: 38px;
+            font-size: 30px;
+            text-align: center;
+            background-color: #0080ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #downloadButton {
+            display: none;
+            width: 200px;
+            height: 40px;
+            font-size: 25px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        #downloadButton:hover {
+            background-color: #218838;
+        }
+    
+        @media (max-width: 600px) {
+            body {
+                margin-top: 20px;
+                font-size: medium;
+            }
+            img {
+                max-width: 90%;
+                margin-top: 20px;
+            }
+            input[type="text"] {
+                width: 90%;
+                font-size: 20px;
+                height: 25px;
+            }
+            button {
+                width: 90%;
+                font-size: 20px;
+                height: 30px;
+            }
+            #downloadButton {
+                width: 90%;
+                font-size: 20px;
+                height: 35px;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+
+    <h5 style="text-align: left; font-family: monospace;">Powered by: Mina Raouf</h5>
+    <img src="pic.jpg" style="display: inline; max-width: 45%;">
+    <h1>نتيجة المستوى الأول - صيف ٢٠٢٥</h1>
+    <h1>(ادخل الكود للاستعلام عن النتيجة)</h1>
+    <input type="text" id="idInput" placeholder="ادخل الكود"><br><br>
+    <button onclick="showPicture()">استعلام</button>
+
+    <div id="imageContainer">
+        <img id="picture" alt="Certificate will appear here">
+        <button id="downloadButton" onclick="downloadPicture()">تحميل</button>
+    </div>
+
+    <script>
+        function showPicture() {
+            const id = document.getElementById('idInput').value;
+            const picture = document.getElementById('picture');
+            const downloadButton = document.getElementById('downloadButton');
+            const imagePath = `Result/${id}.jpg`;  
+
+            picture.src = imagePath;
+
+            picture.onload = function() {
+                picture.style.display = 'block';
+                downloadButton.style.display = 'inline-block';
+                downloadButton.setAttribute('data-image-path', imagePath);
+            };
+
+            picture.onerror = function() {
+                picture.style.display = 'none';
+                downloadButton.style.display = 'none';
+                alert('كود الطالب خاطئ او مكتوب باللغة العربية اعد المحاولة');
+            };
+        }
+
+        function downloadPicture() {
+            const downloadButton = document.getElementById('downloadButton');
+            const imagePath = downloadButton.getAttribute('data-image-path');
+            const link = document.createElement('a');
+            link.href = imagePath;
+            link.download = imagePath.split('/').pop();
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+
+</body>
+</html>
